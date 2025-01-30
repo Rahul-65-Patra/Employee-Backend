@@ -18,7 +18,7 @@ dotenv.config();    // Load environment variables from .env file
 connectToDatabase(); 
 const app = express();
 app.use(cors({
-   origin:"https://employeems-iota.vercel.app",
+   origin:"https://employee-frontend-taupe.vercel.app",
    credentials: true
 }));
 
