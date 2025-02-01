@@ -22,11 +22,8 @@ app.use(cors({
    credentials: true
 }));
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello, Vercel!' });
-});
-
 app.use(express.json());
+
 app.use(express.static('public/uploads'));
 app.use('/api/auth', authRouter);
 app.use('/api/department', departmentRouter);  
@@ -36,6 +33,11 @@ app.use('/api/leave', leaveRouter);
 app.use('/api/attendance', attendanceRouter);
 app.use('/api/setting', settingRouter);
 app.use('/api/dashboard', dashboardRouter);
+
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello, Vercel!' });
+});
 
 
 app.listen(process.env.PORT,()=>{

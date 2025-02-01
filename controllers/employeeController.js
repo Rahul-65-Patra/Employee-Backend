@@ -22,6 +22,8 @@ const upload = multer({
 const addEmployee = async(req,res)=>{
 
   try{
+
+    console.log("Received Data:", req.body);
     const {name,email,password,employeeId,dob,gender,maritalStatus,designation, department,salary,role } = req.body;
 
      // Check if the employeeId already exists
