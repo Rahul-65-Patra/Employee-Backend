@@ -24,13 +24,7 @@ const addEmployee = async(req,res)=>{
   try{
 
     console.log("Received Data:", req.body);
-    console.log("Received Data:", req.body);
     const {name,email,password,employeeId,dob,gender,maritalStatus,designation, department,salary,role } = req.body;
-
-    if (!name || !email || !password || !employeeId || !dob || !gender || !designation || !department || !salary || !role) {
-      return res.status(400).json({ success: false, error: "All fields are required" });
-    }
-
 
      // Check if the employeeId already exists
      const existingEmployee = await Employee.findOne({ employeeId });
