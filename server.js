@@ -17,10 +17,12 @@ dotenv.config();    // Load environment variables from .env file
 
 connectToDatabase(); 
 const app = express();
-app.use(cors({
-   origin:"https://employee-frontend-ndyd.onrender.com",
-   credentials: true
-}));
+app.use(cors(
+//   {
+//    origin:"https://employee-frontend-ndyd.onrender.com",
+//    credentials: true
+// }
+));
 
 app.use(express.json());
 
@@ -36,7 +38,7 @@ app.use('/api/dashboard', dashboardRouter);
 
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello, Vercel!' });
+  res.json({ message: 'Hello, Rahul!' });
 });
 
 

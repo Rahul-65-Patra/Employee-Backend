@@ -3,6 +3,7 @@ import User from "../models/User.js"
 import bcrypt from 'bcryptjs'
 import multer from "multer"
 import path from "path"
+//import Department from "../models/Department.js";
 
 
 
@@ -11,12 +12,12 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + path.extname(file.originalname));
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 })
 
 const upload = multer({
-  storage:storage
+  storage:storage 
 })
 
 const addEmployee = async(req,res)=>{
@@ -27,10 +28,12 @@ const addEmployee = async(req,res)=>{
     const {name,email,password,employeeId,dob,gender,maritalStatus,designation, department,salary,role } = req.body;
 
      // Check if the employeeId already exists
+
      const existingEmployee = await Employee.findOne({ employeeId });
      if (existingEmployee) {
        return res.status(400).json({ success: false, error: "Employee ID already exists" });
      }
+
 
   const user  = await User.findOne({email})
   if(user){
@@ -46,11 +49,12 @@ const addEmployee = async(req,res)=>{
     role,
     profileImage: req.file ? req.file.filename : "",
   })
+ 
  const savedUser =  await newUser.save();
  const newEmployee = new Employee({
   userId: savedUser._id,
   employeeId,
-   dob,
+   dob, 
    gender,
    maritalStatus, 
    designation,
