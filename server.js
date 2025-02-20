@@ -19,7 +19,7 @@ connectToDatabase();
 const app = express();
 app.use(cors(
   {
-   origin:"https://employee-frontendweb.vercel.app",
+   origin:"https://employee-frontend-beta.vercel.app",
    credentials: true
 }
 ));
